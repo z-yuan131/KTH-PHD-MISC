@@ -25,6 +25,20 @@ def fluc_pressure(p,time):
 
     return dp,dpmean,dptuda
 
+## calculate total, mean, fluctuation varible values
+def fluc_varibles(var,time,var_farfield):
+    dvar = np.zeros([len(time), len(var[0])])
+    dvartuda = np.zeros([len(time), len(var[0])])
+    dvarmean = np.zeros(len(var[0]))
+    for i in range(len(time)):
+        dvar[i] = var[i] - var_farfield*np.ones(len(var[0]))
+        dvarmean += dvar[i]
+    dvarmean = dvarmean/len(time)
+    for i in range(len(time)):
+        dvartuda[i] = dvar[i] - dvarmean
+
+    return dvar,dvarmean,dvartuda
+
 
 ## calculate rms values of input time depended arrays
 ## root mean square

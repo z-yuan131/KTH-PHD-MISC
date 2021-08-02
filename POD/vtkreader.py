@@ -51,3 +51,17 @@ def load_coordinate(file_name):
     numpy_coordinates = numpy_coordinates.T     #transpose: x = numpy_coordinates[0], y = numpy_coordinates[1] etc..
     
     return numpy_coordinates[0],numpy_coordinates[1]
+
+
+
+def load_cell(file_name):
+    # Read the source file.
+    reader = vtk.vtkXMLUnstructuredGridReader()   # read the fucking file
+    reader.SetFileName(file_name)
+    reader.Update()                               # Needed because of GetScalarRange
+
+    NcellData = reader.GetOutput().GetCells().GetData().GetNumberOfTuples()
+    Ncell = reader.GetOutput().GetNumberOfCells()
+    cellData = ns.vtk_to_numpy(reader.GetOutput().GetCells().GetData()) 
+    
+    return NcellData,Ncell,cellData
