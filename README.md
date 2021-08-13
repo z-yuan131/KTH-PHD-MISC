@@ -3,6 +3,6 @@ Hanifi norm can be found in Energy norm folder
 
 Functions: PSD, Dirivitivity, Cd, Cl, Cp, SPOD, POD, Energy Norm
 
-pre-processing includes
+pre-processing includes generate the aerofoil with round trailing edge, generate the mesh by Nekmesh, mesh convertor to pyfrm,
 
 Problem may exits: only valid for 2d problem, memory problem
